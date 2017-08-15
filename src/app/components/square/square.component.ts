@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-square',
+  selector: 'chess-square',
   templateUrl: './square.component.html',
   styleUrls: ['./square.component.css']
 })

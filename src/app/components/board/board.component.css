@@ -1,0 +1,7 @@
+section {
+  min-width: 1080px;
+}
+
+chess-board-row {
+  display: block;
+}

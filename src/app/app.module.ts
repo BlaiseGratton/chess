@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { SquareComponent } from './components/square/square.component';
 import { BoardComponent } from './components/board/board.component';
 import { PieceComponent } from './components/piece/piece.component';
+import { RowComponent } from './components/row/row.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SquareComponent,
     BoardComponent,
-    PieceComponent
+    PieceComponent,
+    RowComponent
   ],
   imports: [
     BrowserModule
