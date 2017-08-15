@@ -1,1 +1,3 @@
-<section></section>
+<div *ngIf="square.piece" [dragula]="'square-' + square.id">
+  <chess-piece [piece]="square.piece"></chess-piece>
+</div> 

@@ -1,8 +1,8 @@
 import { Player } from './player'
-import { SquareComponent } from '../components/square/square.component'
+import { Isquare } from './Isquare'
 
-export interface IPiece {
+export interface Ipiece {
   readonly player: Player;
   readonly name: string;
-  checkMoves(location: SquareComponent) : SquareComponent[]
+  checkMoves(location: Isquare) : Isquare[]
 }

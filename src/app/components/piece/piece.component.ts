@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { DragulaService } from 'ng2-dragula/ng2-dragula';
+
+import { IPiece } from '../../shared/ipiece'
 
 @Component({
-  selector: 'app-piece',
+  selector: 'chess-piece',
   templateUrl: './piece.component.html',
   styleUrls: ['./piece.component.css']
 })
 export class PieceComponent implements OnInit {
 
-  constructor() { }
+  @Input() piece: IPiece
 
-  ngOnInit() {
+  constructor(private dragula: DragulaService) { }
+
+  ngOnInit() { 
+    this.dragula.drag.subscribe(val => {})
+
+    this.dragula.drop.subscribe(val => {})
   }
-
 }
