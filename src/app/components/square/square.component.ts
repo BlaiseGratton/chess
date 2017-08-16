@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { Isquare } from '../../shared/isquare'
-import { MoveService } from '../../shared/move.service'
 
 
 @Component({

@@ -1,1 +1,4 @@
-<chess-board-row [row]="row" *ngFor="let row of board"></chess-board-row>
+<chess-board-row [row]="row"
+                 [oddRow]="odd"
+                 *ngFor="let row of board; let odd=odd">
+</chess-board-row>

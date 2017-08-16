@@ -1,6 +1,6 @@
-<chess-square *ngFor="let square of row"
+<chess-square *ngFor="let square of row; let oddSquare=odd"
               [square]="square"
               [attr.item-id]="square.id"
-              class="container"
-              [dragula]="'drop-square'">
+              [dragula]="'drop-square'"
+              [ngClass]="{ dark: !(oddSquare && oddRow || !(oddSquare || oddRow)) }">
 </chess-square>

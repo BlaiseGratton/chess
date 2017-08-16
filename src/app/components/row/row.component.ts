@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { SquareComponent } from '../square/square.component'
+// import { SquareComponent } from '../square/square.component'
+import { Isquare } from '../../shared/isquare'
 
 @Component({
   selector: 'chess-board-row',
@@ -8,7 +9,8 @@ import { SquareComponent } from '../square/square.component'
   styleUrls: ['./row.component.css']
 })
 export class RowComponent implements OnInit {
-  @Input() row: SquareComponent[]
+  @Input() row: Isquare[]
+  @Input() oddRow: Boolean
 
   constructor() { }
 

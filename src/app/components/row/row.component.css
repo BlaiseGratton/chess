@@ -5,3 +5,7 @@ chess-square {
   height: 70px;
   border: 1px solid black;
 }
+
+.dark {
+  background-color: darkgrey;
+}

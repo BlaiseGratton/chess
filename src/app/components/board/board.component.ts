@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import 'rxjs/add/operator/debounceTime';
 import { Subscription } from 'rxjs/Subscription';
+import { DragulaService } from 'ng2-dragula/ng2-dragula'
 
 import { Isquare } from '../../shared/isquare';
 import { MoveService } from '../../shared/move.service';
@@ -16,7 +17,8 @@ export class BoardComponent implements OnInit {
   board: Isquare[][]
   movesSubscription: Subscription
 
-  constructor(private moveService: MoveService) { }
+  constructor(private moveService: MoveService,
+  private dragula: DragulaService) { }
 
 
   private generateBoard = () => {
@@ -233,11 +235,30 @@ export class BoardComponent implements OnInit {
     console.log('process move')
   }
 
+  dragHandler(val: any): void {
+    const squareId = val[2].getAttribute('item-id')
+    const pieceId = val[1].getAttribute('item-id')
+    this.moveService.registerDrag({ squareId, pieceId })
+  }
+
+  dropHandler(val: any): void {
+    const cancelFunc = this.dragula.find('drop-square').drake.cancel
+    const squareId = val[2].getAttribute('item-id')
+    const pieceId = val[1].getAttribute('item-id')
+    this.moveService.registerDrop({ squareId, pieceId, cancelFunc })
+  }
+
   ngOnInit() {
     this.generateBoard()
     this.setupBoard()
+
+    this.dragula.drag
+      .subscribe(val => this.dragHandler(val))
+
+    this.dragula.drop
+      .subscribe(val => this.dropHandler(val))
+
     this.movesSubscription = this.moveService.move$
-      .debounceTime(10)
       .subscribe(move => this.processMove(move))
   }
 
