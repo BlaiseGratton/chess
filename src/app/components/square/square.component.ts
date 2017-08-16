@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { DragulaService } from 'ng2-dragula/ng2-dragula';
-
 import { Isquare } from '../../shared/isquare'
+import { MoveService } from '../../shared/move.service'
 
 
 @Component({
@@ -13,11 +12,7 @@ import { Isquare } from '../../shared/isquare'
 export class SquareComponent implements OnInit {
   @Input() square: Isquare
 
-  constructor(private dragula: DragulaService) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.dragula.setOptions(`square-${this.square.id}`, {
-      revertOnSpill: true
-    })
-  }
+  ngOnInit() { }
 }

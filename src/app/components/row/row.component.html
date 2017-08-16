@@ -1,1 +1,6 @@
-<chess-square [square]="square" *ngFor="let square of row"></chess-square>
+<chess-square *ngFor="let square of row"
+              [square]="square"
+              [attr.item-id]="square.id"
+              class="container"
+              [dragula]="'drop-square'">
+</chess-square>
