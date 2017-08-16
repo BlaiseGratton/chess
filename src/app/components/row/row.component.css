@@ -1,4 +1,5 @@
 chess-square {
+  position: relative;
   display: inline-block;
   width: 70px;
   height: 70px;
