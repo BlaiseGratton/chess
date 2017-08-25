@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
-import 'rxjs/add/operator/debounceTime';
-import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/debounceTime'
+import { Subscription } from 'rxjs/Subscription'
 import { DragulaService } from 'ng2-dragula/ng2-dragula'
 
 import { Board } from '../../shared/board'
-import { Iboard } from '../../shared/iboard';
-import { Isquare } from '../../shared/isquare';
-import { MoveService } from '../../shared/move.service';
+import { Color } from '../../shared/color.enum'
+import { Iboard } from '../../shared/iboard'
+import { Isquare } from '../../shared/isquare'
+import { Ipiece } from '../../shared/ipiece'
+import { MoveFunc } from '../../shared/movefunc'
+import { MoveService } from '../../shared/move.service'
 
 @Component({
   selector: 'chess-board',
@@ -25,7 +28,13 @@ export class BoardComponent implements OnInit {
   ) { }
 
   private processMove(message: any) {
-    debugger
+    const fromSquare: Isquare = this.board.findSquare(message.from)
+    const toSquare: Isquare = this.board.findSquare(message.to)
+    const piece: Ipiece = fromSquare.piece
+
+    for (let move of piece.moves) {
+      move(piece.player.color, this.board, fromSquare, toSquare)
+    }
   }
 
   dragHandler(val: any): void {

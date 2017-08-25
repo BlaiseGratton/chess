@@ -1,9 +1,10 @@
 import { Isquare } from './isquare'
+import { MoveFunc } from './movefunc'
 import { Player } from './player'
 
 export class BasePiece {
   private moveCount: number;
-  readonly moves: { (): Boolean; }[];
+  readonly moves: MoveFunc[];
   readonly player: Player;
   readonly name: string;
 
