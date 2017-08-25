@@ -39,7 +39,6 @@ export class PieceComponent implements OnInit {
   ngOnInit() {
     const color = this.piece.player.color === Color.Light ? 'white' : 'black'
     const piece = this.pieces[this.piece.name]
-
     this.svgPath = `/assets/${color}_${piece}.svg`
   }
 }
