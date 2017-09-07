@@ -33,7 +33,7 @@ export class BoardComponent implements OnInit {
     const piece: Ipiece = fromSquare.piece
 
     for (let move of piece.moves) {
-      move(piece.player.color, this.board, fromSquare, toSquare)
+      move(fromSquare, toSquare)
     }
   }
 

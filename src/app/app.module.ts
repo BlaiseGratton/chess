@@ -10,7 +10,6 @@ import { PieceComponent } from './components/piece/piece.component';
 import { RowComponent } from './components/row/row.component';
 import { SquareComponent } from './components/square/square.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -13,8 +13,7 @@ export class Board implements Iboard {
   player1: Player
   player2: Player
 
-  findPiece(id: string): Ipiece {
-    for (let row of this.rows) {
+  findPiece(id: string): Ipiece { for (let row of this.rows) {
       const square: Isquare = row.find(s => s.piece && s.piece.name === id)
       if (square) return square.piece
     }
@@ -165,7 +164,7 @@ export class Board implements Iboard {
     this.rows[7][0].piece = new BasePiece(
       this.player1,
       'r1',
-      Moves.forward(2)
+      Moves.forward(2, this.player1.color, this)
     )
 
     this.rows[7][1].piece = {
