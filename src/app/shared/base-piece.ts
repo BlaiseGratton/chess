@@ -20,7 +20,5 @@ export class BasePiece {
     this.player = player
     this.name = name
     this.moves = moves
-
-    const x = this.player.color
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnInit, OnChanges } from '@angular/core'
 
 import { Color } from '../../shared/color.enum'
 import { Ipiece } from '../../shared/ipiece'
@@ -36,9 +36,17 @@ export class PieceComponent implements OnInit {
     'p8': 'pawn'
   }
 
-  ngOnInit() {
+  private setPiece = () => {
     const color = this.piece.player.color === Color.Light ? 'white' : 'black'
     const piece = this.pieces[this.piece.name]
     this.svgPath = `/assets/${color}_${piece}.svg`
+  }
+
+  ngOnInit() {
+    this.setPiece()
+  }
+
+  ngOnChanges() {
+    this.setPiece()
   }
 }

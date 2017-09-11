@@ -4,19 +4,26 @@ import { Isquare } from './isquare'
 import { MoveFunc } from './movefunc'
 
 export const Moves = {
+
   forward(limit: number, player: Color, board: Iboard): MoveFunc {
     return function (from: Isquare, to: Isquare): Boolean {
-      let [y, x] = from.id.split('')
+      let [y, x] = [parseInt(from.id[0]), parseInt(from.id[1])]
       const direction = player === Color.Dark ? 1 : -1
 
-      let squareHit: Boolean = false
-      let canGoForward = true
-
-      while (!squareHit && canGoForward) {
+      while (true) {
         y += direction
-        const nextSquare: Isquare = board[y][x]
+        if (y < 0 || y > 7) {
+          return false
+        } else {
+          const nextSquare: Isquare = board.rows[y][x]
+          if (nextSquare.piece && nextSquare.piece.player.color === player) {
+            return false
+          }
+          if (nextSquare === to) {
+            return true
+          }
+        }
       }
-      return squareHit
     }
   },
 

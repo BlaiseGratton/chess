@@ -2,9 +2,11 @@ import { Ipiece } from './ipiece'
 import { Isquare } from './isquare'
 
 export interface Iboard {
-  findPiece(id: string): Ipiece;
+  rows: Isquare[][]
 
-  findSquare(id: string): Isquare;
+  findPiece(id: string): Ipiece
 
-  setupBoard(state?: any): void;
+  findSquare(id: string): Isquare
+
+  setupBoard(state?: any): void
 }

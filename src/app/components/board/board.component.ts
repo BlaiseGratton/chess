@@ -7,6 +7,7 @@ import { DragulaService } from 'ng2-dragula/ng2-dragula'
 import { Board } from '../../shared/board'
 import { Color } from '../../shared/color.enum'
 import { Iboard } from '../../shared/iboard'
+import { ImoveMessage } from '../../shared/imove-message'
 import { Isquare } from '../../shared/isquare'
 import { Ipiece } from '../../shared/ipiece'
 import { MoveFunc } from '../../shared/movefunc'
@@ -27,14 +28,21 @@ export class BoardComponent implements OnInit {
     private dragula: DragulaService
   ) { }
 
-  private processMove(message: any) {
+  private processMove(message: ImoveMessage) {
     const fromSquare: Isquare = this.board.findSquare(message.from)
     const toSquare: Isquare = this.board.findSquare(message.to)
     const piece: Ipiece = fromSquare.piece
 
+    let squareHit = false
+
     for (let move of piece.moves) {
-      move(fromSquare, toSquare)
+      if (!squareHit && move(fromSquare, toSquare)) {
+        fromSquare.piece = null
+        toSquare.piece = piece
+        return
+      }
     }
+    message.cancelFunc(true)
   }
 
   dragHandler(val: any): void {
@@ -60,7 +68,7 @@ export class BoardComponent implements OnInit {
       .subscribe(val => this.dropHandler(val))
 
     this.movesSubscription = this.moveService.move$
-      .subscribe(move => this.processMove(move))
+      .subscribe((move: ImoveMessage) => this.processMove(move))
   }
 
   ngOnDestroy() {

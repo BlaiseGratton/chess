@@ -216,12 +216,11 @@ export class Board implements Iboard {
       checkMoves: (loc: Isquare) : Isquare[] => null
     }
 
-    this.rows[6][0].piece = {
-      moves: [],
-      name: 'p1',
-      player: this.player1,
-      checkMoves: (loc: Isquare) : Isquare[] => null
-    }
+    this.rows[6][0].piece = new BasePiece(
+      this.player1,
+      'p1',
+      Moves.forward(2, this.player1.color, this)
+    )
 
     this.rows[6][1].piece = {
       moves: [],
