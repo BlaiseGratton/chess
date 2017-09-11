@@ -4,7 +4,7 @@ import { Player } from './player'
 
 export class BasePiece {
   private moveCount: number;
-  readonly moves: MoveFunc[];
+  public readonly moves: MoveFunc[];
   readonly player: Player;
   readonly name: string;
 
@@ -14,8 +14,8 @@ export class BasePiece {
 
   constructor(
     player: Player,
-    name: string, 
-    ...moves
+    name: string,
+    moves: MoveFunc[]
   ) {
     this.player = player
     this.name = name
