@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, OnInit, Output } from '@angular/core'
 
 import 'rxjs/add/operator/debounceTime'
 import { Subscription } from 'rxjs/Subscription'
@@ -23,6 +23,8 @@ export class BoardComponent implements OnInit {
   board: Iboard
   movesSubscription: Subscription
   playerTurn: Color
+  @Output()
+  onTurnChange = new EventEmitter<Color>()
 
   constructor(
     private moveService: MoveService,
@@ -45,6 +47,7 @@ export class BoardComponent implements OnInit {
         } else {
           this.playerTurn = Color.Dark
         }
+        this.onTurnChange.emit(this.playerTurn)
         return true
       }
     }

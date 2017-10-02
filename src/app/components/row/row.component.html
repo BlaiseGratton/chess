@@ -2,5 +2,6 @@
               [square]="square"
               [attr.item-id]="square.id"
               [dragula]="'drop-square'"
+              [class.rotate]="!!playerTurn"
               [ngClass]="{ dark: !(oddSquare && oddRow || !(oddSquare || oddRow)) }">
 </chess-square>

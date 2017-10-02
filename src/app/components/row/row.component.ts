@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-// import { SquareComponent } from '../square/square.component'
+import { Color } from '../../shared/color.enum'
 import { Isquare } from '../../shared/isquare'
 
 @Component({
@@ -13,6 +13,8 @@ export class RowComponent implements OnInit {
   row: Isquare[]
   @Input()
   oddRow: Boolean
+  @Input()
+  playerTurn: Color
 
   constructor() { }
 

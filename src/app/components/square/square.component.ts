@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core'
 
 import { Isquare } from '../../shared/isquare'
 
@@ -9,7 +9,8 @@ import { Isquare } from '../../shared/isquare'
   styleUrls: ['./square.component.css']
 })
 export class SquareComponent implements OnInit {
-  @Input() square: Isquare
+  @Input()
+  square: Isquare
 
   constructor() { }
 
