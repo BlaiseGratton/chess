@@ -28,10 +28,7 @@ const squareHit = (from: Isquare,
 
       // 'passThrough' logic is only for knight
       if (passThrough) {
-        if (to.piece && to.piece.player.color === player) {
-          return true
-        }
-        if (nextSquare === to) {
+        if ((to.piece && to.piece.player.color === player) || nextSquare === to) {
           return true
         }
       } else {
