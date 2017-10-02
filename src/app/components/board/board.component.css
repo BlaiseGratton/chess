@@ -4,5 +4,5 @@ section {
 
 chess-board-row {
   display: block;
-  margin: -4px;
+  height: 72px;
 }

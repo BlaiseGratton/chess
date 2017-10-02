@@ -1,8 +1,7 @@
 chess-board {
   display: block;
-  width: 578px;
+  width: 576px;
   margin: auto;
-  margin-top: 90px;
 }
 
 .rotate {
