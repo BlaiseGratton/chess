@@ -22,6 +22,7 @@ export class BoardComponent implements OnInit {
 
   board: Iboard
   movesSubscription: Subscription
+  playerTurn: Color
 
   constructor(
     private moveService: MoveService,
@@ -39,6 +40,11 @@ export class BoardComponent implements OnInit {
       if (!squareHit && move(fromSquare, toSquare)) {
         fromSquare.piece = null
         toSquare.piece = piece
+        if (this.playerTurn === Color.Dark) {
+          this.playerTurn = Color.Light
+        } else {
+          this.playerTurn = Color.Dark
+        }
         return true
       }
     }
@@ -47,9 +53,14 @@ export class BoardComponent implements OnInit {
   }
 
   dragHandler(val: any): void {
-    const squareId = val[2].getAttribute('item-id')
     const pieceId = val[1].getAttribute('item-id')
-    this.moveService.registerDrag({ squareId, pieceId })
+    const squareId = val[2].getAttribute('item-id')
+
+    if(this.board.findSquare(squareId).piece.player.color === this.playerTurn) {
+      this.moveService.registerDrag({ squareId, pieceId })
+    } else {
+      this.dragula.find('drop-square').drake.cancel(true)
+    }
   }
 
   dropHandler(val: any): void {
@@ -61,6 +72,7 @@ export class BoardComponent implements OnInit {
 
   ngOnInit() {
     this.board = new Board()
+    this.playerTurn = Color.Light
 
     this.dragula.drag
       .subscribe(val => this.dragHandler(val))
