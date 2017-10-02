@@ -28,7 +28,7 @@ export class BoardComponent implements OnInit {
     private dragula: DragulaService
   ) { }
 
-  private processMove(message: ImoveMessage) {
+  processMove(message: ImoveMessage) {
     const fromSquare: Isquare = this.board.findSquare(message.from)
     const toSquare: Isquare = this.board.findSquare(message.to)
     const piece: Ipiece = fromSquare.piece
@@ -39,10 +39,11 @@ export class BoardComponent implements OnInit {
       if (!squareHit && move(fromSquare, toSquare)) {
         fromSquare.piece = null
         toSquare.piece = piece
-        return
+        return true
       }
     }
     message.cancelFunc(true)
+    return false
   }
 
   dragHandler(val: any): void {

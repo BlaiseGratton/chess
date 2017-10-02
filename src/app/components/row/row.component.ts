@@ -9,8 +9,10 @@ import { Isquare } from '../../shared/isquare'
   styleUrls: ['./row.component.css']
 })
 export class RowComponent implements OnInit {
-  @Input() row: Isquare[]
-  @Input() oddRow: Boolean
+  @Input()
+  row: Isquare[]
+  @Input()
+  oddRow: Boolean
 
   constructor() { }
 
